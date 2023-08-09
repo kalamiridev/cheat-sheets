@@ -2,7 +2,7 @@
 
 1. Use the command to open an override file for `docker.service` in a text editor.
 
-```console 
+```bash 
 sudo systemctl edit docker.service 
 ``` 
 2. Add or modify the following lines, substituting your own values.
@@ -17,17 +17,17 @@ ExecStart=/usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:2375
 4. Reload the `systemctl` configuration.
 
 ```bash
-sudo systemctl daemon-reload
+systemctl daemon-reload
 ```
 
 5. Restart Docker.
 
-```shell
+```bash
 sudo systemctl restart docker.service
 ```
 
 6. Verify that the change has gone through.
 
-```console 
+```bash
 sudo netstat -lntp | grep dockerd
 ```
