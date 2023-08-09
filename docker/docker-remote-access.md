@@ -22,7 +22,7 @@ sudo systemctl daemon-reload
 
 5. Restart Docker.
 
-```console
+```shell
 sudo systemctl restart docker.service
 ```
 
