@@ -3,19 +3,19 @@
 Update packages
 
 ```bash
-apt-get update
+sudo apt update && sudo apt full-upgrade -y
 ```
 
 Install packages to allow apt to use a repository over HTTPS
 
 ```bash
-apt-get install ca-certificates curl gnupg lsb-release
+sudo apt install ca-certificates curl gnupg lsb-release
 ```
 
 Add Dockers official GPG key
 
 ```bash
-mkdir -p /etc/apt/keyrings
+sudo mkdir -p /etc/apt/keyrings
 ```
 
 ```bash
@@ -23,7 +23,7 @@ curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/
 ```
 
 ```bash
-chmod a+r /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
 ```
 
 Use the following command to set up the repository
@@ -38,21 +38,28 @@ echo \
 Install Docker Engine
 
 ```bash
-apt-get update
+sudo apt update
 ```
 
 ```bash
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 ## Uninstall Docker Engine
 
 ```bash
-apt-get purge docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt purge docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
 ## Delete all images, containers, and volumes
 
 ```bash
-rm -rf /var/lib/docker
-rm -rf /var/lib/containerd
+sudo rm -rf /etc/docker
+```
+
+```bash
+sudo rm -rf /var/lib/docker
+```
+
+```bash
+sudo rm -rf /var/lib/containerd
 ```
