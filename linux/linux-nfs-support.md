@@ -52,3 +52,7 @@ umount -f -l /foldername
 
 > -f – Force unmount (in case of an unreachable NFS system. Requires kernel 2.1.116 or later.)  
 > -l – Lazy unmount. Detach the filesystem from the filesystem hierarchy now, and cleanup all references to the filesystem as soon as it is not busy anymore. (Requires kernel 2.4.11 or later.)
+
+### NAS nfs Plex Privilages
+
+NFS Permition -> Squash: Map all users to admin
