@@ -11,11 +11,19 @@
     > /etc/group - Defines user groups.  
     a> /etc/gshadow - Stores encrypted group passwords.
 
+### Change root password
+
+```sh
+passwd root
+```
+
 ### Add User
 
 ```sh
 sudo adduser your-username
 ```
+
+
 
 ### Install sudo
 
