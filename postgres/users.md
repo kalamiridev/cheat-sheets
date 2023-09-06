@@ -1,3 +1,5 @@
+[How to Delete a Postgres User (Drop User)](https://phoenixnap.com/kb/delete-postgres-user)
+
 ## Delete a Postgres User with Dependencies
 
 1. Assign the object ownership from the error detail to another user. For example, to transfer the objects owned by myuser to postgres, run:
