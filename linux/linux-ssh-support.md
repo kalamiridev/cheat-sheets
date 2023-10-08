@@ -83,3 +83,9 @@ scp /etc/ssh/sshd_config user@your-machine-ip:/home/user/Downloads
  rm -f .ssh/known_hosts
  ssh-keygen -R "hostname"
 ```
+
+### Start SSH automatically on boot
+
+```sh
+sudo systemctl enable ssh
+```
