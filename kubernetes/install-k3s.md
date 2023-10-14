@@ -1,15 +1,20 @@
+## Disable Firewal - Ubuntu, Debian
+
+```bash
+sudo ufw disable
+```
+
 ## Install K3S
 
 ```bash
-curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" INSTALL_K3S_EXEC="server --disable traefik --disable servicelb" sh - 
+curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--disable servicelb --disable traefik --write-kubeconfig-mode 644 --kube-apiserver-arg default-not-ready-toleration-seconds=30 --kube-apiserver-arg default-unreachable-toleration-seconds=30 --kube-controller-arg node-monitor-period=20s --kube-controller-arg node-monitor-grace-period=20s --kubelet-arg node-status-update-frequency=5s" sh - 
 ```
 
 ## Get Node Token 
 
 ```bash
-cat /var/lib/rancher/k3s/server/node-token
+sudo cat /var/lib/rancher/k3s/server/node-token
 ```
-
 
 ## Join K3S Cluster
 
