@@ -1,4 +1,8 @@
 # Cheat Sheets
-- code
-- docker
-- linux
+- Code
+- Docker
+- Docker Swarm
+- Kubernetes
+- Linux Debian/Ubuntu
+- PostgreSQL
+- Proxmox
