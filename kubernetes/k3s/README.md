@@ -36,7 +36,7 @@ sudo cat /var/lib/rancher/k3s/server/node-token
 ## Join K3S Cluster
 
 ```bash
-curl -sfL https://get.k3s.io | K3S_URL=https://your-ip:6443 K3S_TOKEN=your-token sh -
+curl -sfL https://get.k3s.io | K3S_URL=https://<your-ip>:6443 K3S_TOKEN=<your-token> sh -
 ```
 
 ## Delete the node from cluster
@@ -53,4 +53,10 @@ kubectl drain <node-name>
 3. Delete the node
 ```bash
 kubectl delete node <node-name>
+```
+
+## Deploy an autoscaler
+
+```bash
+kubectl autoscale deploy/<container-name> -n <namespace> --cpu-percent=95 --min=3 --max=10
 ```
