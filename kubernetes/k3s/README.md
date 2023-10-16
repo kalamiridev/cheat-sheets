@@ -1,4 +1,4 @@
-# K3S Installation
+# K3S Installation and Configuration
 
 [K3S Documentation](https://docs.k3s.io)
 
