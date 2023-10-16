@@ -39,3 +39,18 @@ sudo cat /var/lib/rancher/k3s/server/node-token
 curl -sfL https://get.k3s.io | K3S_URL=https://your-ip:6443 K3S_TOKEN=your-token sh -
 ```
 
+## Delete the node from cluster
+
+1. Find the node 
+```bash
+kubectl get nodes
+``` 
+2. Drain the node
+```bash
+kubectl drain <node-name>
+```
+
+3. Delete the node
+```bash
+kubectl delete node <node-name>
+```
