@@ -47,7 +47,7 @@ kubectl get nodes
 ``` 
 2. Drain the node
 ```bash
-kubectl drain <node-name>
+kubectl drain <node-name> --ignore-daemonsets
 ```
 
 3. Delete the node
@@ -58,5 +58,5 @@ kubectl delete node <node-name>
 ## Deploy an autoscaler
 
 ```bash
-kubectl autoscale deploy/<container-name> -n <namespace> --cpu-percent=95 --min=3 --max=10
+kubectl autoscale deploy/<container-name> -n <namespace> --cpu-percent=95 --min=2 --max=10
 ```
