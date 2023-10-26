@@ -8,7 +8,7 @@
 docker swarm init
 ```
 
-## Leave node from node
+## Leave swarm
 
 ```bash
 docker swarm leave
