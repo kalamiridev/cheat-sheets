@@ -12,10 +12,10 @@
    > /etc/group - Defines user groups.  
    > a> /etc/gshadow - Stores encrypted group passwords.
 
-### Change root password
+### Change user password
 
 ```sh
-passwd root
+passwd username
 ```
 
 ### Add User
