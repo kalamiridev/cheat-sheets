@@ -6,16 +6,22 @@
 apt install openssh-server
 ```
 
+### Check status
+
+```sh
+sudo systemctl status ssh
+```
+
+### Start SSH automatically on boot
+
+```sh
+sudo systemctl enable ssh
+```
+
 ## Configuration
 
 ```sh
 nano /etc/ssh/sshd_config
-```
-
-## Status
-
-```sh
-systemctl status ssh
 ```
 
 ## SSH Keys
@@ -32,11 +38,45 @@ ssh-keygen
 ssh-keygen -t ed25519 -C "comment"
 ```
 
-### View public key 
+### View public key
 
 ```sh
 cat ~/.ssh/id_rsa.pub
 ```
+
+## Copy Public SSH Key
+
+### If ssh folder and file not exists
+
+**Login as user**
+
+```sh
+mkdir ~/.ssh
+```
+
+```sh
+cd ~/.ssh
+```
+
+```sh
+touch authorized_keys
+```
+
+**Check Permissions**
+
+```sh
+ls -ld ~/.ssh
+```
+
+```sh
+ls -ld ~/.ssh/authorized_keys
+```
+
+### Set Permissions if not match
+
+- chmod 700 ~/.ssh
+- chmod 600 ~/.ssh/id_rsa
+- chmod 644 ~/.ssh/authorized_keys
 
 ### Copy public key to remote machine from Linux
 
@@ -82,10 +122,4 @@ scp /etc/ssh/sshd_config user@your-machine-ip:/home/user/Downloads
 ```sh
  rm -f .ssh/known_hosts
  ssh-keygen -R "hostname"
-```
-
-### Start SSH automatically on boot
-
-```sh
-sudo systemctl enable ssh
 ```
