@@ -4,7 +4,7 @@
 ind . -type f -name "*.yaml" -exec rename 's/\.yaml$/.yml/' '{}' \;
 ```
 
-## Check Debian Version 
+## Check Debian Version
 
 ### Using hostnamectl command
 
@@ -13,6 +13,7 @@ hostnamectl
 ```
 
 ### Using the lsb_release command
+
 The lsb_release command can be used to find the version of a Linux OS. It might not be already installed in your OS, so you will need to first install it. Run the following command in the Terminal to install lsb_release:
 
 ```sh
@@ -65,4 +66,10 @@ LC_MEASUREMENT=hr_HR.UTF-8
 
 ```sh
 dpkg-reconfigure locales
+```
+
+## Disable Suspend via Terminal
+
+```sh
+sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
 ```
