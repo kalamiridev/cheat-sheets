@@ -3,7 +3,7 @@
 ## Installation
 
 ```sh
-apt install openssh-server
+sudo apt install openssh-server
 ```
 
 ### Check status
@@ -21,7 +21,7 @@ sudo systemctl enable ssh
 ## Configuration
 
 ```sh
-nano /etc/ssh/sshd_config
+sudo nano /etc/ssh/sshd_config
 ```
 
 ## SSH Keys
@@ -99,16 +99,29 @@ cat .ssh/authorized_keys
 ### Edit SSH config
 
 ```sh
-nano /etc/ssh/sshd_config
+sudo nano /etc/ssh/sshd_config
 ```
 
 ```config
-PermitRootUser no
+Include /etc/ssh/sshd_config.d/*.conf
+
+PermitRootLogin no
 PasswordAuthentication no
+
+KbdInteractiveAuthentication no
+
+UsePAM yes
+
+X11Forwarding yes
+PrintMotd no
+
+AcceptEnv LANG LC_*
+
+Subsystem       sftp    /usr/lib/openssh/sftp-server
 ```
 
 ```sh
-systemctl restart ssh
+sudo systemctl restart ssh
 ```
 
 ### Download Config File
