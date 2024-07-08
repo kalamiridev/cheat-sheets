@@ -99,6 +99,10 @@ cat .ssh/authorized_keys
 ### Edit SSH config
 
 ```sh
+sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
+```
+
+```sh
 sudo nano /etc/ssh/sshd_config
 ```
 
