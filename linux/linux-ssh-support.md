@@ -44,6 +44,12 @@ ssh-keygen -t ed25519 -C "comment"
 cat ~/.ssh/id_rsa.pub
 ```
 
+### Create Public Key from Private Key
+
+```sh
+ssh-keygen -y -f ~/.ssh/id_rsa > ~/.ssh/id_rsa.pub
+```
+
 ## Copy Public SSH Key
 
 ### If ssh folder and file not exists
