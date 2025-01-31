@@ -2,7 +2,7 @@
 
 ### Expose Ollama service to local network
 
-- Allow Ollama port on Firewal
+- Allow Ollama port on Firewall
 
 ```bash
 netsh advfirewall firewall add rule name="Ollama" dir=in action=allow protocol=TCP localport=11434
