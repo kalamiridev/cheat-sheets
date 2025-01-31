@@ -1,4 +1,5 @@
 # Cheat Sheets
+
 - Code
 - Docker
 - Docker Swarm
@@ -6,3 +7,4 @@
 - Linux Debian/Ubuntu
 - PostgreSQL
 - Proxmox
+- AI
