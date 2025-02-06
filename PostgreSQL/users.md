@@ -21,6 +21,20 @@
 
 **Table 1:** Options
 
+### Connect to psql prompt as postgres user
+
+```sh
+sudo -u postgres psql
+```
+
+### List Users
+
+```sh
+\du
+```
+
+### Create User
+
 ```sh
 sudo -u postgres createuser -s -d -r --replication --pwprompt [name]
 ```
