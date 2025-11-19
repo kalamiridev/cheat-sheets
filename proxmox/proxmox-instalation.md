@@ -10,11 +10,10 @@ Or Comment it
 nano /etc/apt/sources.list.d/pve-enterprise.list
 ```
 
-
 ## Add the proxmox community repo
 
 ```md
-echo "deb http://download.proxmox.com/debian/pve $(grep "VERSION=" /etc/os-release | sed -n 's/.*(\(.*\)).*/\1/p') pve-no-subscription" > /etc/apt/sources.list.d/pve-community.list
+echo "deb http://download.proxmox.com/debian/pve $(grep "VERSION=" /etc/os-release | sed -n 's/._(\(._\)).\*/\1/p') pve-no-subscription" > /etc/apt/sources.list.d/pve-community.list
 ```
 
 ## Update software repositories
@@ -27,10 +26,27 @@ apt update && apt full-upgrade -y
 reboot
 ```
 
-## Remove no subscription nag popup proxmox 7
+## Remove no subscription nag popup proxmox 9
 
 ```md
-sed -Ezi.bak "s/(Ext.Msg.show\(\{\s+title: gettext\('No valid sub)/void\(\{ \/\/\1/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js
+cp /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js.bkup
+```
+
+```md
+nano /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js
+```
+
+Edit the file nano proxmoxlib.js and locate the code (ctrl+w to search for “No valid subscription”)
+Replace text to look like this (insert void({ // at the beginning of the line)
+
+```md
+Ext.Msg.show({
+title: gettext('No valid subscription'),
+```
+
+```md
+void({ //Ext.Msg.show({
+title: gettext('No valid subscription'),
 ```
 
 ## Restart pveproxy service
@@ -91,7 +107,7 @@ tlp-stat -b
 tlp-stat -s
 ```
 
-Tune ZFS to use a small amount of RAM, 512Mb in this case (the maths behind the number is very simple: 512x1024x1024). I am running my testing box for a year now, with no issues or data loss. As far as I am concerned, this is safe to do, but  smart  people on the internet will definitely tell you otherwis
+Tune ZFS to use a small amount of RAM, 512Mb in this case (the maths behind the number is very simple: 512x1024x1024). I am running my testing box for a year now, with no issues or data loss. As far as I am concerned, this is safe to do, but smart people on the internet will definitely tell you otherwis
 
 ```md
 echo "options zfs zfs_arc_max=536870912" >> /etc/modprobe.d/zfs.conf
