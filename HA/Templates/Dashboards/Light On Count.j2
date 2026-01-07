@@ -1,0 +1,6 @@
+{% set AREAS = ['kitchen','office','bedroom','living room'] %} {% set DOMAIN = 'light' %} {% set ns = namespace(ids=[]) %} {% for a in AREAS %} {% set ns.ids =
+ns.ids + area_entities(a) %} {% endfor %}
+{{ expand(ns.ids|unique)
+   | selectattr('domain','equalto', DOMAIN)
+   | selectattr('state','equalto','on')
+   | list | count }}

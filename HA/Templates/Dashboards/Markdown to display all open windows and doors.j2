@@ -1,0 +1,7 @@
+# Security 🔏
+
+{% if states.sensor.open_doors_and_windows.state | int > 0 %}
+  You have {{states.sensor.open_doors_and_windows.state}} doors/windows open.
+{% else %}
+  All windows and doors are closed.
+{% endif %}

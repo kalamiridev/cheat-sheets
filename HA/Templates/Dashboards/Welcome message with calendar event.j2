@@ -1,0 +1,21 @@
+{% set time = now().hour %}
+{% if time >= 5 and time < 12 %}
+  {% set greeting = 'Good morning' %}
+{% elif time >= 12 and time < 17 %}
+  {% set greeting = 'Good afternoon' %}
+{% elif time >= 17 and time < 24 %}
+  {% set greeting = 'Good evening' %}
+{% elif time >= 0 and time < 5 %}
+  {% set greeting = 'You should be sleeping' %} 
+{% endif %}
+
+{% if state_attr('calendar.lewis_s_calendar', 'start_time') == None %}
+  {% set cal_message = "you have no upcoming events, enjoy 🥳"%}
+{% else %}
+  {% set start_time = state_attr('calendar.lewis_s_calendar', 'start_time') | as_timestamp | timestamp_custom("%H:%M", false) %}
+  {% set cal_message = "your next event is at " + start_time %}
+{% endif %}
+
+# {{greeting}}, {{user}}!
+
+It's {{now().hour}}:{{now().minute}} and  {{cal_message}}.

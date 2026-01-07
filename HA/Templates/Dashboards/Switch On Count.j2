@@ -1,0 +1,6 @@
+{% set area_id = 'kitchen' %}
+{% set ents   = expand(area_entities(area_id)) %}
+{% set switch = ents 
+   | selectattr('domain', 'equalto', 'switch') 
+   | selectattr('state', 'equalto', 'on') %}
+{{ switch | list | count }}

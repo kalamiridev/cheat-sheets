@@ -1,0 +1,6 @@
+{% set area_id = 'kitchen' %}
+{% set ents   = expand(area_entities(area_id)) %}
+{% set lights = ents 
+   | selectattr('domain',    'equalto', 'media_player') 
+   | selectattr('state',     'equalto', 'playing') %}
+{{ lights | list | count }}

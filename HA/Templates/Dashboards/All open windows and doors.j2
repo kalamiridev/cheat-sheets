@@ -1,0 +1,4 @@
+{{ states.binary_sensor
+   | selectattr('attributes.device_class', 'in', ['door','window'])
+   | selectattr('state', 'equalto', 'on')
+   | list | count }}
