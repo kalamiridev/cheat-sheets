@@ -29,24 +29,11 @@ reboot
 ## Remove no subscription nag popup proxmox 9
 
 ```md
-cp /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js.bkup
-```
+cp /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js \
+   /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js.bak
 
-```md
-nano /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js
-```
-
-Edit the file nano proxmoxlib.js and locate the code (ctrl+w to search for “No valid subscription”)
-Replace text to look like this (insert void({ // at the beginning of the line)
-
-```md
-Ext.Msg.show({
-title: gettext('No valid subscription'),
-```
-
-```md
-void({ //Ext.Msg.show({
-title: gettext('No valid subscription'),
+sed -Ezi "s/(Ext.Msg.show\(\{\s+title: gettext\('No valid sub)/void\(\{ \/\/\1/g" \
+   /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js
 ```
 
 ## Restart pveproxy service
